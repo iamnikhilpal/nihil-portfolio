@@ -135,7 +135,7 @@ const Home = () => {
             <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 p-1">
               <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center">
                 <Image
-                  src="/profile-picture.png"
+                  src="/images/profile-picture.png"
                   alt="Nihil Pal"
                   className="w-30 h-30 rounded-full object-cover"
                   width={180}
