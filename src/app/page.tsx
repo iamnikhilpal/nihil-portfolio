@@ -41,7 +41,7 @@ const Home = () => {
       duration: "November 2021 – Present (3 years 10 months)",
       location: "Bengaluru, Karnataka, India",
       achievements: [
-        "Leading the end-to-end invoicing process for Dell Technologies' subscription billing product, ensuring accuracy and efficiency",
+        "Leading the end-to-end invoicing process for Dell Technologies&apos; subscription billing product, ensuring accuracy and efficiency",
         "Designed and developed tools, such as a scheduler service within an orchestration tool, dynamically managing job execution and future schedules",
         "Initiated modernisation efforts, restructuring legacy services, enhancing code quality and scalability",
         "Introduced new technologies to integrate with legacy systems, enriching existing processes"
@@ -194,7 +194,7 @@ const Home = () => {
               <div className="bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-lg rounded-2xl p-8 border border-white/10 shadow-2xl">
                 <h3 className="text-2xl font-bold text-white mb-4">Innovation Focus</h3>
                 <p className="text-white/80 leading-relaxed mb-6">
-                  I'm passionate about modernizing legacy systems, restructuring services for better
+                  I&apos;m passionate about modernizing legacy systems, restructuring services for better
                   scalability, and introducing cutting-edge technologies that seamlessly integrate
                   with existing infrastructure.
                 </p>
@@ -317,7 +317,7 @@ const Home = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Get In Touch
             </h2>
-            <p className="text-white/80 text-lg">Let's connect and discuss opportunities</p>
+            <p className="text-white/80 text-lg">Let&apos;s connect and discuss opportunities</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 shadow-2xl text-center hover:shadow-blue-500/10 transition-all duration-300">
