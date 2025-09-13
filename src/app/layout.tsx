@@ -24,6 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <header>
+        <meta name='impact-site-verification' content='b642c344-3957-46c3-b42c-df4d35da8197'></meta>
+      </header>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
