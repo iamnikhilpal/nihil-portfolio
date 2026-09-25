@@ -6,9 +6,22 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Nihil Pal | Lead Software Engineer & AI Systems Architect",
+  metadataBase: new URL("https://nihilpal.in"),
+  title: {
+    default: "Nihil Pal | Lead Software Engineer & AI Systems Architect",
+    template: "%s | Nihil Pal",
+  },
   description:
-    "Lead Software Engineer specializing in multi-agent AI architectures, distributed orchestration pipelines, and cloud backend engineering.",
+    "Engineering portfolio and technical publications by Nihil Pal. Specializing in autonomous multi-agent AI systems, distributed architectures, and cloud-scale infrastructure.",
+  openGraph: {
+    title: "Nihil Pal | Lead Software Engineer & AI Systems Architect",
+    description:
+      "Engineering portfolio and technical publications by Nihil Pal. Specializing in autonomous multi-agent AI systems, distributed architectures, and cloud-scale infrastructure.",
+    url: "https://nihilpal.in",
+    siteName: "Nihil Pal",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
