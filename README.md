@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# nihil-pal-portfolio
 
-## Getting Started
+Personal engineering portfolio and technical writing platform for **Nihil Pal** (Lead Software Engineer & AI Systems Architect).
 
-First, run the development server:
+Built with **Next.js 15 (App Router)**, **TypeScript**, **Tailwind CSS**, and **React Markdown**. Designed with an editorial, high-contrast, minimalist aesthetic inspired by modern engineering leadership portfolios.
+
+---
+
+## ⚡ Tech Stack & Architecture
+
+- **Framework:** [Next.js](https://nextjs.org/) (App Router, Static Site Generation / SSG)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS (`@tailwindcss/postcss`)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Content Engine:** Local JSON data store (`src/data/blogs.json`) with dynamic markdown parsing via `react-markdown`
+- **Deployment:** Vercel / Cloudflare Pages / Static Export (`out/`)
+
+---
+
+## 📂 Project Structure
+
+```text
+nihil-pal-portfolio/
+├── public/
+│   ├── favicon.ico
+│   ├── profile-picture.png       # Headshot asset
+│   └── resume.pdf                # Downloadable resume
+├── src/
+│   ├── app/
+│   │   ├── blogs/
+│   │   │   └── [slug]/
+│   │   │       └── page.tsx      # Dynamic blog article renderer
+│   │   ├── globals.css           # Tailwind base styles
+│   │   ├── layout.tsx            # Global layout, metadata & font setup
+│   │   └── page.tsx              # Main portfolio landing page
+│   ├── components/
+│   │   ├── Header.tsx            # Floating backdrop blur navigation
+│   │   └── Footer.tsx            # Minimalist footer
+│   └── data/
+│       └── blogs.json            # Markdown-supported local article store
+├── next.config.ts
+├── postcss.config.mjs
+├── tailwind.config.ts
+├── tsconfig.json
+└── package.json
+
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18.17+ or Node.js 20+
+- npm, pnpm, or yarn
+
+### 1. Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone [https://github.com/iamnikhilpal/nihil-pal-portfolio.git](https://github.com/iamnikhilpal/nihil-pal-portfolio.git)
+cd nihil-pal-portfolio
+npm install
+
+```
+
+### 2. Development
+
+Run the local development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000?utm_source=gemini) with your browser to view the portfolio.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To test production static site generation and linting:
 
-## Learn More
+```bash
+npm run build
+npm run start
 
-To learn more about Next.js, take a look at the following resources:
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ✍️ Publishing a New Blog Post
 
-## Deploy on Vercel
+All technical articles are managed in `src/data/blogs.json`. To publish a new post:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Open `src/data/blogs.json`.
+2. Append a new post object to the array:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+````json
+{
+  "slug": "your-article-slug",
+  "title": "Your Article Title",
+  "date": "Oct 2026",
+  "readingTime": "6 min read",
+  "tag": "Architecture",
+  "excerpt": "A short 1-2 sentence summary of what this article covers.",
+  "content": "### Section Header\n\nYour article content in standard **Markdown** format...\n\n```python\n# Code blocks are supported\nprint('Hello World')\n```"
+}
+````
+
+3. Save the file. Next.js will automatically generate the static route at `/blogs/your-article-slug` on your next build.
+
+---
+
+## 🌐 Production Domain
+
+- **Primary URL:** [https://nihilpal.in](https://nihilpal.in?utm_source=gemini)
+- **GitHub:** [@iamnikhilpal](https://github.com/iamnikhilpal?utm_source=gemini)
+- **LinkedIn:** [in/nihil-pal](https://www.linkedin.com/in/nihil-pal?utm_source=gemini)
+
+---
+
+## 📄 License
+
+MIT © [Nihil Pal](https://nihilpal.in?utm_source=gemini)

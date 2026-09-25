@@ -1,0 +1,20 @@
+[
+    {
+        "slug": "architecting-multi-agent-systems-crewai",
+        "title": "Architecting Multi-Agent Systems with CrewAI & Browser Automation",
+        "date": "Sep 2026",
+        "readingTime": "5 min read",
+        "tag": "Case Study",
+        "excerpt": "Handling anti-bot challenges, state persistence, and deterministic orchestration in automated search pipelines.",
+        "content": "### Introduction\n\nBuilding autonomous agentic workflows involves more than simply linking an LLM to an API. When managing autonomous browser automation alongside agent swarms, several systemic challenges emerge:\n\n* **Anti-bot detection & dynamic CAPTCHAs**\n* **State synchronization across multi-agent loops**\n* **Deterministic execution boundaries**\n\n### The Multi-Agent Architecture\n\nIn our pipeline, we divide tasks between specialized agent instances using **CrewAI**:\n\n1. **Harvesting Agent**: Dispatches headless Playwright browser sessions configured with humanized cursor movements and randomized exponential backoff.\n2. **Disambiguation Agent**: Takes raw SERP output and identifies candidate enterprise targets.\n3. **Extraction Agent**: Formats unstructured DOM nodes into strictly validated Pydantic schemas.\n\n```python\nfrom crewai import Agent, Task, Crew\n\nharvester = Agent(\n    role='Lead Researcher',\n    goal='Extract verified company signals without triggering rate-limits',\n    backstory='Specialized in deep-web search patterns and SERP structures.'\n)\n```\n\n### Key Bottlenecks & Solutions\n\nThe primary failure mode with browser orchestration is rate-limiting. Introducing jittered delays and rotating browser fingerprinted contexts ensures deterministic long-running runs."
+    },
+    {
+        "slug": "deconstructing-enterprise-batch-invoicing-bottlenecks",
+        "title": "Deconstructing Enterprise Batch Invoicing Bottlenecks",
+        "date": "Aug 2026",
+        "readingTime": "7 min read",
+        "tag": "Architecture",
+        "excerpt": "Designing dynamic scheduler tiers and queue prioritization for high-volume financial billing systems.",
+        "content": "### The Challenge\n\nProcessing high-volume subscription billing for enterprise clients demands zero transactional drop and idempotent processing guarantees.\n\n### Architectural Strategy\n\nInstead of running massive bulk operations in a monolithic cron, we introduced a **decoupled dynamic scheduler service**:\n\n* **Queue Prioritization**: Segregating immediate delta adjustments from monthly scheduled bulk runs.\n* **Idempotency Keys**: Guaranteeing that retries never produce duplicate invoice line items.\n* **Circuit Breaking**: Gracefully pausing processing queues if external payment or ERP APIs introduce latency spikes."
+    }
+]
