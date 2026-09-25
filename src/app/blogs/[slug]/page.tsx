@@ -5,18 +5,54 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import blogsData from "@/data/blogs.json";
+import type { Metadata } from "next";
 
-interface Props {
-    params: Promise<{ slug: string }>;
-}
+// 1. CRITICAL for static export: Tells Next.js that ANY slug not returned
+// by generateStaticParams should strictly 404 rather than attempting dynamic SSR.
+export const dynamicParams = false;
 
+// 2. Ensure only valid, non-empty string slugs are returned
 export async function generateStaticParams() {
-    return blogsData.map((post) => ({
-        slug: post.slug,
-    }));
+    if (!blogsData || !Array.isArray(blogsData)) return [];
+
+    return blogsData
+        .filter((post) => Boolean(post.slug && post.slug.trim()))
+        .map((post) => ({
+            slug: post.slug.trim(),
+        }));
 }
 
-export default async function BlogPostPage({ params }: Props) {
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    const post = blogsData.find((p) => p.slug === slug);
+
+    if (!post) return {};
+
+    return {
+        title: `${post.title} | Nihil Pal`,
+        description: post.excerpt,
+        alternates: {
+            canonical: `https://nihilpal.in/blogs/${post.slug}/`,
+        },
+        openGraph: {
+            title: post.title,
+            description: post.excerpt,
+            url: `https://nihilpal.in/blogs/${post.slug}/`,
+            siteName: "Nihil Pal",
+            type: "article",
+        },
+    };
+}
+
+export default async function BlogPostPage({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
     const { slug } = await params;
     const post = blogsData.find((p) => p.slug === slug);
 
@@ -27,16 +63,14 @@ export default async function BlogPostPage({ params }: Props) {
     return (
         <article className="min-h-screen bg-[#FAFAFA] text-zinc-900 pt-28 pb-20">
             <div className="max-w-3xl mx-auto px-6">
-                {/* Navigation Back */}
                 <Link
-                    href="/#writing"
+                    href="/blogs/"
                     className="inline-flex items-center gap-1.5 text-xs font-mono text-zinc-500 hover:text-zinc-900 transition-colors mb-8"
                 >
                     <ArrowLeft className="w-3.5 h-3.5" />
-                    <span>Back to overview</span>
+                    <span>Back to all articles</span>
                 </Link>
 
-                {/* Post Header */}
                 <div className="mb-10 pb-8 border-b border-zinc-200">
                     <div className="flex items-center gap-3 text-xs font-mono text-zinc-500 mb-4">
                         <span className="px-2 py-0.5 rounded bg-zinc-200/60 text-zinc-700 font-medium">
@@ -62,7 +96,6 @@ export default async function BlogPostPage({ params }: Props) {
                     </p>
                 </div>
 
-                {/* Markdown Render Body */}
                 <div className="prose prose-zinc max-w-none space-y-6 text-zinc-700 leading-relaxed text-sm md:text-base">
                     <ReactMarkdown
                         components={{
