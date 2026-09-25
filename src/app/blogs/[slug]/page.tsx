@@ -44,6 +44,13 @@ export async function generateMetadata({
             url: `https://nihilpal.in/blogs/${post.slug}/`,
             siteName: "Nihil Pal",
             type: "article",
+            publishedTime: post.date,
+            authors: ["Nihil Pal"],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: post.title,
+            description: post.excerpt,
         },
     };
 }
